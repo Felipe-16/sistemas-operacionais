@@ -28,21 +28,22 @@ public class Account {
     }
 
     // Criacao do metodo deposito
-    public void deposit(){
+    public void deposit(String client){
         Random random = new Random();
         double valueOfDeposit = this.valores[random.nextInt(4)];
         this.balance += valueOfDeposit;
-        System.out.println("Client: xxx depositou: "+valueOfDeposit);
-        System.out.println("Conta: saldo atualizado de "+this.getBalance());
+        System.out.println("Client: " + client + " depositou: " + valueOfDeposit);
+        System.out.println("Conta: saldo atualizado de " + this.getBalance());
     }
 
     // Criacao do metodo para realizar retiradas
-    public void withdraw() {
+    public void withdraw(String client) {
         Random random = new Random();
         double valueOfWithDraw = this.valores[random.nextInt(4)];
+
         if(verify(valueOfWithDraw)){
             this.balance -= valueOfWithDraw;
-            System.out.println("Cliente: xxx retirou " +valueOfWithDraw);
+            System.out.println("Cliente: " + client + "retirou " + valueOfWithDraw);
             System.out.println("Conta: saldo atualizado de "+this.getBalance());
         }
         else {

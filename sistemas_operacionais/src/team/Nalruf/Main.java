@@ -6,18 +6,28 @@ public class Main {
     public static void main(String[] args) {
 
         // Criacao da conta client
-        Account account = new Account(1000);
-        Client client[] = {
-                new Client("Felipe", account),
-                new Client( "Filipe", account),
-                new Client("Mat", account),
-                new Client("Jun", account)};
+        Account account = new Account(1000.0);
+        Client customers[] = {
+                new Client("Augustus", account),
+                new Client( "Lucius", account),
+                new Client("Claudius", account),
+                new Client("Tiberius", account)};
 
 
         System.out.println("Conta criada com saldo inicial de: "+account.getBalance());
 
-        account.deposit();
+        Signal.handle(new Signal("INT"), //CTRL + C
+                (Signal signal) -> {
+                    System.out.println("Terminando simulação...");
+                    for (Client customer : customers)
+                    {
+                        customer.interrupt();
+                    }
+                });
 
-        account.withdraw();
+        for (Client customer : customers)
+        {
+           customer.start();
+        }
     }
 }
