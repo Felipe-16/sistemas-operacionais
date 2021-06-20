@@ -2,7 +2,7 @@ package team.Nalruf;
 import java.util.Random;
 
 // Criacao da conta Client
-public class Client extends Thread{
+public class Client extends Thread {
     private String client;
     private final Account account;
 
@@ -38,8 +38,8 @@ public class Client extends Thread{
     }
 
     @Override
-    public void start()
-    {
+    public void start() {
+        
         //Substituir por um loop infinito se o CTRL + C der certo
         for (int i = 0; i < 10; i++)
         {
